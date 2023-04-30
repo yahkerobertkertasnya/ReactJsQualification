@@ -1,0 +1,61 @@
+
+
+.card {
+    text-decoration: none;
+    color: black;
+    padding-top: 0vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.card:hover {
+    color: black;
+}
+
+@media (min-width: 769px) {
+  .card {
+    width: 20% !important;
+  }
+}
+  
+@media (min-width: 451px) and (max-width: 769px) {
+  .card {
+    width: 25% !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .card {
+    width: 33.333333%;
+  }
+}
+
+.cardImageDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.cardImage {
+    width: 100%;
+}
+
+.cardBody {
+    padding: 0.2vw;
+    padding-top: 1vw;
+    height: 6.2vw;
+}
+
+.cardBodyContent {
+    font-family: "Verdana";
+    font-size: 0.5rem;
+    height: 5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.cardFavoriteButton {
+  margin-right: 2.5vw;
+  margin-bottom: 7vw;
+}

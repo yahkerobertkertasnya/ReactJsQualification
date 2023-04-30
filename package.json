@@ -3,11 +3,30 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
+    "eslint": "^8.39.0",
+    "eslint-config-next": "^13.3.1",
+    "graphql": "^16.6.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/client-preset": "^3.0.1",
+    "@graphql-codegen/introspection": "3.0.1",
+    "@graphql-codegen/typescript": "^3.0.4",
+    "@graphql-codegen/typescript-resolvers": "^3.2.1",
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^18.16.1",
+    "@types/react": "^18.2.0",
+    "apollo": "^2.11.1",
+    "typescript": "^5.0.4"
   }
 }
