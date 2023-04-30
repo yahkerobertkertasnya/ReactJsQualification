@@ -16,6 +16,7 @@ function SearchContents(){
             setMedia(queryResult);
             setRawData(queryResult);
         }
+        
     }, [queryResult]);
 
     const onSearchChange = (search : string) => {

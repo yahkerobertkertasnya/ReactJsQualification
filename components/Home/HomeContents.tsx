@@ -9,9 +9,8 @@ function HomeContents(){
     const {loading, error, queryResult} = useContext(QueryContext);
 
     useEffect(() => {
-        if(queryResult){
-            setMedia(queryResult);
-        }
+        if(queryResult) setMedia(queryResult);
+
     }, [queryResult])
 
     if(loading) return (
@@ -29,16 +28,19 @@ function HomeContents(){
         <div>
             <div className="d-flex flex-wrap">
                 <div  className="d-flex flex-wrap">
-                { media !== null ? 
-                media.map((items : any, index : any) => {
-                    if(items.title.english !== null)
-                    return <CardContent media = {items} />
-                }) : 
-                <div className="position-absolute top-50 start-50 translate-middle">
-                    <h1> Loading... </h1>
+
+                    { media !== null ? 
+                    media.map((items : any, index : any) => {
+                        if(items.title.english !== null)
+                        return <CardContent media = {items} />
+                    }) : 
+                    <div className="position-absolute top-50 start-50 translate-middle">
+                        <h1> Loading... </h1>
+                    </div>
+                    }
+
                 </div>
-                }
-                </div><div style={{ padding: "4vh"}}/>
+                <div style={{ padding: "4vh"}}/>
             </div>
         </div>
     );

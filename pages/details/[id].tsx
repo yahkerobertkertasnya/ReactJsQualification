@@ -1,5 +1,5 @@
 import { getAllId } from "../../lib/queries/GetID";
-import { getAnimeDetail } from "../../lib/queries/GetAnimeDetail";
+import { getAnimeDetail, throttledFetchAnimeDetail } from "../../lib/queries/GetAnimeDetail";
 import DetailsContents from "../../components/Details/DetailsContents";
 
 
@@ -26,16 +26,21 @@ export async function getStaticPaths() {
     return {
         paths,
         fallback: false,
-      };
-  }
-  
-  export async function getStaticProps({ params } : { params : { id : string }}) {
-    const postData : any = await getAnimeDetail({ id : Number(params.id)})
-        return {
-            props: {
-                postData,
-        },
     };
-  }
+}
+  
+export async function getStaticProps({ params } : { params : { id : string }}) {
+    const postData = await throttledFetchAnimeDetail({ id : Number(params.id)});
+    // console.log(postData.averageScore);
+    return {
+        props: {
+            postData,
+    },
+};
+}
+
+
+
+
 
 export default detailPage;

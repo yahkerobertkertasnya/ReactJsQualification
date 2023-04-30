@@ -6,8 +6,8 @@ function Searchbar({ searchFunction } : any) : JSX.Element {
     let theme = useContext(ThemeContext);
 
     const handleInputChange = (event: any) => {
-        // searchData(event.target.value);
         searchFunction(event.target.value);
+        
     }
 
     return (
