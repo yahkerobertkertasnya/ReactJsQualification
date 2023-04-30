@@ -10,6 +10,26 @@ query getAllId {
       id
     }
   }
+  Page2: Page(page:2, perPage:50){
+  media(type:ANIME, sort:SCORE_DESC){
+    id
+  }
+}
+Page3: Page(page:3, perPage:50){
+  media(type:ANIME, sort:SCORE_DESC){
+    id
+  }
+}
+Page4: Page(page:4, perPage:50){
+   media(type:ANIME, sort:SCORE_DESC){
+     id
+   }
+ }
+Page5: Page(page:5, perPage:50){
+  media(type:ANIME, sort:SCORE_DESC){
+    id
+  }
+}
 }`;
 
 export async function getAllId() : Promise<number[]> {
@@ -29,23 +49,3 @@ export async function getAllId() : Promise<number[]> {
   return mergedId;
 
 }
-// Page2: Page(page:2, perPage:50){
-//   media(type:ANIME, sort:SCORE_DESC){
-//     id
-//   }
-// }
-// Page3: Page(page:3, perPage:50){
-//   media(type:ANIME, sort:SCORE_DESC){
-//     id
-//   }
-// }
-// Page4: Page(page:4, perPage:50){
-//    media(type:ANIME, sort:SCORE_DESC){
-//      id
-//    }
-//  }
-// Page5: Page(page:5, perPage:50){
-//   media(type:ANIME, sort:SCORE_DESC){
-//     id
-//   }
-// }
