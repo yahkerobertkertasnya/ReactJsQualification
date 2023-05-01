@@ -1,5 +1,6 @@
-import { DocumentNode, gql } from "@apollo/client";
+import { ApolloError, DocumentNode, gql } from "@apollo/client";
 import { client } from "../../components/context/QueryResultContext";
+import { Query } from "../../generated/graphql";
 
 
 const GET_ALL_ID : DocumentNode = gql`
@@ -33,11 +34,11 @@ Page5: Page(page:5, perPage:50){
 }`;
 
 export async function getAllId() : Promise<number[]> {
-  const {data, loading, error} : any = await client.query<any>({
+  const {data, loading, error} : { data : any, loading : boolean, error? : ApolloError | undefined } = await client.query({
     query: GET_ALL_ID
   });
 
-  const mergedId = []
+  const mergedId : number[] = [];
 
   for (const key in data) {
       if (data[key].media !== undefined) {

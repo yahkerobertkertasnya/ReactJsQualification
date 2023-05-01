@@ -1,36 +1,31 @@
-import { ApolloClient, InMemoryCache, NormalizedCacheObject, useQuery } from "@apollo/client";
+import { ApolloClient, ApolloError, InMemoryCache, NormalizedCacheObject, useQuery } from "@apollo/client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { GET_ALL_ANIME } from "../../lib/queries/GetAnime";
+import { GET_ALL_ANIME } from "../../lib/queries/GetAnime.graphql";
+import { Media, Query } from "../../generated/graphql";
 
 export const client : ApolloClient<NormalizedCacheObject> = new ApolloClient({
     uri: 'https://graphql.anilist.co',
     cache: new InMemoryCache()
 });
 
-interface QueryResult {
-    error? : any;
-    loading? : any;
-    queryResult? : any;
-}
-
 
 export default function QueryProvider({children} : {children : JSX.Element}){
     const [result, setResult] = useState<any>(undefined);
-    const {loading, error, data} = useQuery(GET_ALL_ANIME);
+    const {loading, error, data} : { loading : boolean, error? : ApolloError | undefined, data : any } = useQuery(GET_ALL_ANIME);
 
 
     
     useEffect(() => {
         if (data) {
-            const allMedia = [];
+            const allMedia : Media[] = [];
 
             for (const key in data) {
                 allMedia.push(...data[key].media);
             }
 
             allMedia.sort((a , b) => {
-                if(a.title.english === null || b.title.english === null ) return -1;
-                if (a.title.english.toLowerCase() < b.title.english.toLowerCase()) {
+                if( !a.title?.english || !b.title?.english ) return -1;
+                else if (a.title.english.toLowerCase() < b.title.english.toLowerCase()) {
                   return -1;
                 } 
                 else if (a.title.english.toLowerCase() > b.title.english.toLowerCase()) {

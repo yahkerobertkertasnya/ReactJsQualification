@@ -1,10 +1,11 @@
 import CardContent from "../Card/CardContent";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "../context/QueryResultContext";
+import { Media } from "../../generated/graphql";
 
 
 function HomeContents(){
-    const [media, setMedia] = useState<any>(null);
+    const [media, setMedia] = useState<Media[] | null>(null);
 
     const {loading, error, queryResult} = useContext(QueryContext);
 
@@ -30,8 +31,8 @@ function HomeContents(){
                 <div  className="d-flex flex-wrap">
 
                     { media !== null ? 
-                    media.map((items : any, index : any) => {
-                        if(items.title.english !== null)
+                    media.map((items : Media, index : any) => {
+                        if(items.title?.english !== null)
                         return <CardContent media = {items} />
                     }) : 
                     <div className="position-absolute top-50 start-50 translate-middle">

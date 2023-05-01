@@ -1,9 +1,10 @@
-import { getAllId } from "../../lib/queries/GetID";
-import { getAnimeDetail, throttledFetchAnimeDetail } from "../../lib/queries/GetAnimeDetail";
+import { getAllId } from "../../lib/queries/GetID.graphql";
+import { throttledFetchAnimeDetail } from "../../lib/queries/GetAnimeDetail.graphql";
 import DetailsContents from "../../components/Details/DetailsContents";
+import { Media } from "../../generated/graphql";
 
 
-function detailPage({postData} : any){
+function detailPage({ postData } : { postData : Media }){
     return (
         <div>
             <DetailsContents data={postData}/>
@@ -22,7 +23,6 @@ export async function getStaticPaths() {
         };
     });
 
-    console.log("NMYAAA" , paths);
     return {
         paths,
         fallback: false,
@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   
 export async function getStaticProps({ params } : { params : { id : string }}) {
     const postData = await throttledFetchAnimeDetail({ id : Number(params.id)});
-    // console.log(postData.averageScore);
+
     return {
         props: {
             postData,

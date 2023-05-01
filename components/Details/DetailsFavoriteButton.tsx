@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 
-function DetailsFavoriteButton({ id } : any){
+function DetailsFavoriteButton({ id } : { id : number} ){
 
    
     const [isFavorite, setFavorite] = useState(() => {

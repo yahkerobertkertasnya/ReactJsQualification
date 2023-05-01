@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 
 
-function Searchbar({ searchFunction } : any) : JSX.Element {
+function Searchbar({ searchFunction } : { searchFunction : (search : string) => void }) : JSX.Element {
     let theme = useContext(ThemeContext);
 
     const handleInputChange = (event: any) => {

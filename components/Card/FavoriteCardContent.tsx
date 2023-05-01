@@ -3,9 +3,10 @@ import styles from '../../styles/card.module.css';
 import FavoriteButton from '../Favorite/FavoriteButton';
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import { Media } from '../../generated/graphql';
 
 
-function CardContent({media} : any){
+function CardContent({media} : { media : Media }){
   let theme = useContext(ThemeContext);
 
     return (
@@ -14,11 +15,11 @@ function CardContent({media} : any){
             <FavoriteButton id={media.id} />
           </div>
         <Link href={"details/" + media.id} className={`d-flex ${styles.cardImageDiv}`}>
-          <img src={media.coverImage.large} alt="" className={`d-flex flex-fill ${styles.cardImage}`} />
+          <img src={media.coverImage?.large ?? ""} alt="" className={`d-flex flex-fill ${styles.cardImage}`} />
         </Link>
         <div className={`${styles.cardBody}`}>
           <div className={`text-wrap text-break lh-sm  ${styles.cardBodyContent} ${theme.text}`}>
-            {media.title.english}
+            {media.title?.english}
           </div>
         </div>
         <div className={`card-footer border-0 py-2 m-0 ${theme.background}`}/>

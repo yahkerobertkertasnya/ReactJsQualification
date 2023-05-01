@@ -1,7 +1,8 @@
+import { Media } from "../../generated/graphql";
 import DetailsPicture from "./DetailsPicture";
 
 
-function DetailsContents({data} : any){
+function DetailsContents({data} : { data : Media }){
 
     return (
         <>
@@ -35,20 +36,20 @@ function DetailsContents({data} : any){
                         </div>
                     </div>
                 </div>
-                <h2 className="my-0">{data.title.english}</h2>
-                <div>{data.title.romaji}</div>
+                <h2 className="my-0">{data.title?.english}</h2>
+                <div>{data.title?.romaji}</div>
                 <div>
                     <div>
                         {data.format} - {data.status} - {data.episodes} ep, {data.duration} min
                         </div>
                 </div>
                 <div> 
-                    {data.genres.map((item : string) => {
+                    {data.genres?.map((item) => {
                         return item + " ";
                     })}
                 </div>
             </div>
-            <div className="py-4 px-3" dangerouslySetInnerHTML={{ __html: data.description}} />
+            <div className="py-4 px-3" dangerouslySetInnerHTML={{ __html: data.description ?? "" }} />
             <div className="py-3"></div>
         </>
         

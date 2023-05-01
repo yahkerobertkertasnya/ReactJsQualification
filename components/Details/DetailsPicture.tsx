@@ -1,8 +1,9 @@
+import { Media } from "../../generated/graphql";
 import DetailsFavoriteButton from "./DetailsFavoriteButton";
 
 
 
-function DetailsPicture({ data } : any){
+function DetailsPicture({ data } : { data : Media }){
 
     return (
         <div className="col position-relative ">
@@ -11,7 +12,7 @@ function DetailsPicture({ data } : any){
                     <div className="position-absolute bottom-0 end-0 px-2">
                         <DetailsFavoriteButton id={data.id} />
                     </div>
-                    <img src={data.coverImage.large} className="img-fluid align-items-center" alt="..." />
+                    <img src={data.coverImage?.large ?? ""} className="img-fluid align-items-center" alt="..." />
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { GET_ALL_ANIME } from "../../lib/queries/GetAnime";
+import { GET_ALL_ANIME } from "../../lib/queries/GetAnime.graphql";
 import CardContent from "../Card/CardContent";
 import { useContext, useEffect, useState } from "react";
 import Searchbar from "./SearchBar";

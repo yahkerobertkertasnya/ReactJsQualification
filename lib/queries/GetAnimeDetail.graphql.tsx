@@ -1,10 +1,11 @@
-import { DocumentNode, gql } from "@apollo/client";
+import { ApolloError, DocumentNode, gql } from "@apollo/client";
 import { client } from "../../components/context/QueryResultContext";
 import pThrottle from "p-throttle";
+import { Query } from "../../generated/graphql";
 
 
 const GET_ANIME_DETAIL : DocumentNode = gql`
-query ($id: Int!) {
+query getAnimeDetail ($id: Int!) {
     Media (id: $id, type: ANIME) {
         id
         coverImage{
@@ -26,21 +27,12 @@ query ($id: Int!) {
     }
 }`;
 
-export async function getAnimeDetail({ id } : { id: number }) : Promise<any> {
-    const {data, loading, error} : any = await client.query<any>({
-      query: GET_ANIME_DETAIL, 
-      variables : { id : id }
-    });
-    
-    return data.Media;
-}
-
 
 
 const throttle = pThrottle({limit: 1, interval: 1000})
 export const throttledFetchAnimeDetail = throttle(async ({ id } : { id: number }) => {
     
-    const {data, loading, error} = await client.query<any>({
+    const {data, loading, error} : { data : Query, loading : boolean, error? : ApolloError | undefined }= await client.query({
         query: GET_ANIME_DETAIL, 
         variables : { id : id }
       });

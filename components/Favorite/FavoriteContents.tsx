@@ -2,12 +2,14 @@ import CardContent from "../Card/CardContent";
 import { useContext, useEffect, useState } from "react";
 import { QueryContext } from "../context/QueryResultContext";
 import FavoriteCardContent from "../Card/FavoriteCardContent";
+import { ApolloError } from "@apollo/client";
+import { Media } from "../../generated/graphql";
 
 
 function HomeContents(){
     const [media, setMedia] = useState<any>(null);
 
-    const {loading, error, queryResult} = useContext(QueryContext);
+    const {loading, error, queryResult} : { loading? : boolean, error? : ApolloError | undefined, queryResult? : Media}= useContext(QueryContext);
 
     useEffect(() => {
         if(queryResult){
