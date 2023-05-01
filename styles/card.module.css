@@ -46,8 +46,8 @@
 
 .cardBodyContent {
     font-family: "Verdana";
-    font-size: 0.5rem;
-    height: 5em;
+    font-size: 0.67rem;
+    height: 2.5em;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 2;
@@ -58,4 +58,8 @@
 .cardFavoriteButton {
   margin-right: 2.5vw;
   margin-bottom: 7vw;
+}
+
+.cardFooter {
+  margin-top: 0.75rem;
 }

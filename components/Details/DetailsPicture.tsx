@@ -8,7 +8,7 @@ function DetailsPicture({ data } : { data : Media }){
     return (
         <div className="col position-relative ">
             <div className="d-flex">
-                <div className="position-relative border border-primary">
+                <div className="position-relative border">
                     <div className="position-absolute bottom-0 end-0 px-2">
                         <DetailsFavoriteButton id={data.id} />
                     </div>

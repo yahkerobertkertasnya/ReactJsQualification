@@ -36,6 +36,6 @@ export const throttledFetchAnimeDetail = throttle(async ({ id } : { id: number }
         query: GET_ANIME_DETAIL, 
         variables : { id : id }
       });
-    //   console.log(data);
+
     return data.Media;
 });

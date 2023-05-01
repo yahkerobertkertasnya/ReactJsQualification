@@ -18,7 +18,7 @@ function CardContent({media} : { media : Media }){
             {media.title?.english}
           </div>
         </div>
-        <div className={`card-footer border-0 p-1 m-0 ${theme.background}`}/>
+        <div className={`card-footer border-0 ${styles.cardFooter} ${theme.background}`}/>
       </Link>
     );
 
