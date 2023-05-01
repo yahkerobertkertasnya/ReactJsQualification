@@ -8,7 +8,7 @@ export default function Bottombar() : JSX.Element {
     
     return (
         <div className="m-0 p-0">
-            <nav className={`navbar fixed-bottom bg-primary p-0 ${theme.bars}`}>
+            <nav className={`navbar fixed-bottom bg-primary p-0 mb-0 ${theme.bars}`}>
                 <div className="d-flex justify-content-evenly flex-fill">
                     <ButtonHome />
                     <ButtonSearch />
