@@ -31,21 +31,28 @@ function HomeContents(){
     return (
         <div>
             <div className="d-flex flex-wrap">
-                { media !== null ? 
+
+                { JSON.parse(localStorage.getItem("Favorites") ?? "").length > 0 ? (
+                    media !== null ? (  
                 
-                media.map((items : any, index : any) => {
-
-                    let lsContent : (string | null) = localStorage.getItem("Favorites");
-
-                    if(lsContent === null) return <div />
+                        media.map((items : any, index : any) => {
+    
+                            let lsContent : (string | null) = localStorage.getItem("Favorites");
+    
+                            if(lsContent === null) return <div />
+                            
+                            let favoriteList : number[] = JSON.parse(lsContent);
+    
+                            if(items.title.english !== null && favoriteList.includes(items.id)) return <FavoriteCardContent media = {items} />
+                        }) 
+                    ) : 
                     
-                    let favoriteList : number[] = JSON.parse(lsContent);
-
-                    if(items.title.english !== null && favoriteList.includes(items.id)) return <FavoriteCardContent media = {items} />
-                }) : 
-                
+                    <div className="position-absolute top-50 start-50 translate-middle">
+                        <h1> Loading... </h1>
+                    </div>
+                ) : 
                 <div className="position-absolute top-50 start-50 translate-middle">
-                    <h1> Loading... </h1>
+                    <h1> No Favorites! </h1>
                 </div>
                 }
             </div>

@@ -22,7 +22,7 @@ function CardContent({media} : { media : Media }){
             {media.title?.english}
           </div>
         </div>
-        <div className={`card-footer border-0 mt-1 p-2 ${theme.background}`}/>
+        <div className={`card-footer border-0 ${styles.cardFooter} ${theme.background}`}/>
       </div>
     );
 

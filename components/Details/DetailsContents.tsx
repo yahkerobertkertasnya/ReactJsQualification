@@ -36,6 +36,9 @@ function DetailsContents({data} : { data : Media }){
                         </div>
                     </div>
                 </div>
+            </div>
+            <hr />
+            <div className="container text-center">
                 <h2 className="my-0">{data.title?.english}</h2>
                 <div>{data.title?.romaji}</div>
                 <div>
@@ -49,6 +52,7 @@ function DetailsContents({data} : { data : Media }){
                     })}
                 </div>
             </div>
+            <hr />
             <div className="py-4 px-3" dangerouslySetInnerHTML={{ __html: data.description ?? "" }} />
             <div className="py-3"></div>
         </>

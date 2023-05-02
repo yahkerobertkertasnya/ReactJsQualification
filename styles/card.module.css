@@ -55,9 +55,25 @@
     -webkit-box-orient: vertical;
 }
 
-.cardFavoriteButton {
-  margin-right: 2.5vw;
-  margin-bottom: 7vw;
+@media (min-width: 767px) {
+  .cardFavoriteButton {
+    margin-right: 2.5vw;
+    margin-bottom: 40%;
+  }
+}
+  
+@media (min-width: 451px) and (max-width: 769px) {
+  .cardFavoriteButton {
+    margin-right: 2.5vw;
+    margin-bottom: 35%;
+  }
+}
+
+@media (max-width: 450px) {
+  .cardFavoriteButton {
+    margin-right: 2.5vw;
+    margin-bottom: 30%;
+  }
 }
 
 .cardFooter {
