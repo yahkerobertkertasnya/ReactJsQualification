@@ -1,20 +1,35 @@
-import { useQuery } from "@apollo/client";
+import { ApolloError, useQuery } from "@apollo/client";
 import { GET_ALL_ANIME } from "../../lib/queries/GetAnime.graphql";
 import CardContent from "../Card/CardContent";
 import { useContext, useEffect, useState } from "react";
 import Searchbar from "./SearchBar";
 import { QueryContext } from "../context/QueryResultContext";
+import { Media } from "../../generated/graphql";
 
 function SearchContents(){
     const [media, setMedia] = useState<any>(null);
     const [rawData, setRawData] = useState<any>(null);
 
-    const {loading, error, queryResult} = useContext(QueryContext);
+    const {loading, error, queryResult} : {loading? : boolean, error? : ApolloError | undefined, queryResult? : Media[] } = useContext(QueryContext);
 
     useEffect(() => {
         if(queryResult){
-            setMedia(queryResult);
-            setRawData(queryResult);
+            var result = queryResult;
+            result.sort((a , b) => {
+                if( !a.title?.english || !b.title?.english ) return -1;
+                else if (a.title?.english < b.title?.english) {
+                  return -1;
+                } 
+                else if (a.title?.english > b.title?.english) {
+                  return 1;
+                } 
+                else {
+                  return 0;
+                }
+            });
+
+            setMedia(result);
+            setRawData(result);
         }
         
     }, [queryResult]);

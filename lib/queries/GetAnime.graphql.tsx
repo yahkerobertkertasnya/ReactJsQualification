@@ -13,6 +13,7 @@ query getAllAnime {
       title{
         english
       }
+      averageScore
     }
   }
   Page2: Page(page:2, perPage:50){
@@ -24,6 +25,7 @@ query getAllAnime {
       title{
         english
       }
+      averageScore
     }
   }
   Page3: Page(page:3, perPage:50){
@@ -35,6 +37,7 @@ query getAllAnime {
       title{
         english
       }
+      averageScore
     }
   }
   Page4: Page(page:4, perPage:50){
@@ -46,6 +49,7 @@ query getAllAnime {
       title{
         english
       }
+      averageScore
     }
   }
   Page5: Page(page:5, perPage:50){
@@ -57,6 +61,7 @@ query getAllAnime {
       title{
         english
       }
+      averageScore
     }
   }
 }`;

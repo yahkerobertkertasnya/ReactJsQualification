@@ -24,11 +24,11 @@ export default function QueryProvider({children} : {children : JSX.Element}){
             }
 
             allMedia.sort((a , b) => {
-                if( !a.title?.english || !b.title?.english ) return -1;
-                else if (a.title.english.toLowerCase() < b.title.english.toLowerCase()) {
+                if( !a.averageScore || !b.averageScore ) return -1;
+                else if (a.averageScore >= b.averageScore) {
                   return -1;
                 } 
-                else if (a.title.english.toLowerCase() > b.title.english.toLowerCase()) {
+                else if (a.averageScore < b.averageScore) {
                   return 1;
                 } 
                 else {
